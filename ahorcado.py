@@ -88,8 +88,8 @@ def validateEntry(entry):
 def juego(diccionario, intentosMax):
     palabras = list(diccionario.keys())
     pistas = list(diccionario.values())
-    palabraActual = palabras[numPalabra]
     numPalabra = 0
+    palabraActual = palabras[numPalabra]
     intentos = 0
     memoria = {}
     while True:
@@ -105,14 +105,14 @@ def juego(diccionario, intentosMax):
                 print("="*50)
                 print("Lo lograste, sigamos con siguiente palabra : ")
                 print("="*50)
-                palabraActual = palabras[numPalabra]
                 numPalabra += 1
                 memoria.clear()
                 intentos = 0
+                palabraActual = palabras[numPalabra]
         else:
             print(f"""
                   Perdiste :c
-        La palabra a encontrar era {palabras[numPalabra]}
+        La palabra a encontrar era {palabraActual}
                   """)
             break
         if numPalabra == len(palabras):

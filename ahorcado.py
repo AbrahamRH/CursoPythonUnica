@@ -4,7 +4,7 @@
 # @file ahorcado.py
 # @brief Solución para el proyecto de ahorcado del curso de python
 # @author AbrahamRH
-# @version 1.0
+# @version 2.1
 # @date 2020-12-21
 
 
@@ -97,7 +97,9 @@ def juego(diccionario, intentosMax):
             cadena = cadenaEspacios(palabras[numPalabra], memoria)
             printGame(intentos, intentosMax, cadena, pistas[numPalabra])
             verification = verificarLetra(memoria, palabras[numPalabra])
-            if verification is not False:
+            if verification == "repetido":
+                pass
+            elif verification is not False:
                 memoria, palabras[numPalabra] = verification
             else:
                 intentos += 1
@@ -136,12 +138,17 @@ def juego(diccionario, intentosMax):
 # -------------------------------
 def verificarLetra(memoria, palabra):
     letra = input("-> ")
-    if not validateEntry(letra):
+    caracteres = list(memoria.values())
+    if not validateEntry(letra) and letra not in palabra:
         return False
-    if letra in palabra:
-        ind = palabra.index(letra)
-        palabra = palabra.replace(letra, "$", 1)
-        memoria[ind] = letra
+    elif letra in caracteres:
+        print("\tCaractér repetido intenta de nuevo")
+        return "repetido"
+    elif letra in palabra:
+        while letra in palabra:
+            ind = palabra.index(letra)
+            palabra = palabra.replace(letra, "$", 1)
+            memoria[ind] = letra
         return memoria, palabra
     else:
         return False

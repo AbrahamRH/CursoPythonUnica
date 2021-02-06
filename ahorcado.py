@@ -23,15 +23,12 @@ def main():
         if dificultad == 1:
             juego({"pez": "Animal marino", "sol": "Estrella",
                    "luz": "Permite ver en la oscuridad"}, 5)
-            break
         elif dificultad == 2:
             juego({"comida": "Puede ser un hotdog",
                    "edificio": "Construcción más grande que una casa", "tienda": "Lugar comprar"}, 3)
-            break
         elif dificultad == 3:
             juego({"dinosaurio": "Animal prehistorico",
                    "computadora": "Equipo electronico", "laberinto": "Lugar para perderse"}, 2)
-            break
         elif dificultad == 0:
             print("\tVuelva pronto!!")
             break
@@ -107,10 +104,10 @@ def juego(diccionario, intentosMax):
                 print("="*50)
                 print("Lo lograste, sigamos con siguiente palabra : ")
                 print("="*50)
-                numPalabra += 1
                 memoria.clear()
                 intentos = 0
                 palabraActual = palabras[numPalabra]
+                numPalabra += 1
         else:
             print(f"""
                   Perdiste :c
